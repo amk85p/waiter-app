@@ -3,18 +3,15 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './components/pages/Home/Home';
 import Footer from './components/vews/Footer/Footer';
 import Header from './components/vews/Header/Header';
-import Table from './components/pages/TableData/TableData';
 import { fetchTables } from './redux/tablesRedux';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import TableData from './components/pages/TableData/TableData';
 
 const App = () => {
   const dispatch = useDispatch();
 
-  useEffect(
-    () => dispatch(fetchTables()),
-    [dispatch]
-  );
+  useEffect(() => dispatch(fetchTables()), [dispatch]);
 
   return (
     <Container>
@@ -22,7 +19,8 @@ const App = () => {
 
       <Routes>
         <Route path='/' element={<Home />} />{' '}
-        <Route path='/table/:id' element={<Table />} />{' '}
+        <Route path='/table/:id' element={<TableData />} />{' '}
+        <Route path='/table/' element={<Home />} />{' '}
         <Route
           path='*'
           element={

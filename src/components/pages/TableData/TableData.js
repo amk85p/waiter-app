@@ -1,31 +1,36 @@
-import { useDispatch } from 'react-redux';
-import { Container } from 'react-bootstrap';
-import { addTableRequest } from '../../../redux/tablesRedux';
-import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { getTableById } from '../../../redux/tablesRedux';
-import Data from '../../features/Data/Data';
 
-// import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
+import { Navigate } from 'react-router-dom';
+import { Col } from 'react-bootstrap';
+
+import { useSelector } from 'react-redux';
+
+import { useParams } from 'react-router-dom';
+
+import SpinnerApp from '../../common/Spinner/Spinner';
+
+import Data from '../../features/Data/Data';
 
 const TableData = () => {
   const { id } = useParams();
 
-  const tableData = useSelector((state) => getTableById(state, parseInt(id)));
+  const table = useSelector((state) => getTableById(state, id));
 
-  console.log('tableData object:', tableData);
-  // console.log('peopleAmount:', peopleAmount);
-  //console.log('tableData.peopleAmount:', tableData.peopleAmount);
+  if (!table) {
+    // return <Navigate to='/' />;
+    return <SpinnerApp />;
+  } else {
+    return (
+      <div>
+        <br />
+        <Col>
+          <Card.Title>Table nr {table.id}</Card.Title>
+        </Col>
 
-  console.log('data', tableData);
-
-  return (
-    <Container>
-      {tableData.map((table) => (
-        <Data key={table.id} {...table} />
-      ))}
-    </Container>
-  );
+        <Data table={table} />
+      </div>
+    );
+  }
 };
-
 export default TableData;

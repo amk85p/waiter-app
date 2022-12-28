@@ -1,42 +1,45 @@
-import { Container } from 'react-bootstrap';
+import { Container, ListGroup } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-import Button from '../../common/Button/Button';
+import { Button } from 'react-bootstrap';
+// import Button from '../../common/ButtonApp/ButtonApp';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import TableTitle from '../../common/TableTitle/TableTitle';
-// import Button from 'react-bootstrap/Button';
+// import TableTitle from '../../common/TableTitle/TableTitle';
+import { NavLink } from 'react-bootstrap';
+// import ButtonApp from '../../common/ButtonApp/ButtonApp';
 
-const Table = (props) => {
+const Table = ({ table }) => {
+  // console.log('id:', table.id);
+
   return (
     <div>
-      <hr></hr>
-      <Row>
-        <Col>
-          <TableTitle id={props.id} />
-        </Col>
-        <Col xs={8}>
-          <Card.Text>
-            <b>Status </b>
-            <span>{props.status}</span>
-          </Card.Text>
-        </Col>
-        <Col>
-          <Button className='p-1' variant='primary' underline='none'>
-            <Nav.Item>
-              <Link
-                variant='primary'
-                to={'/table/' + props.id}
+      <ListGroup>
+        <hr></hr>
+        <Row>
+          <Col>
+            <h4>Table id {table.id} </h4>
+          </Col>
+          <Col xs={8}>
+            <Card.Text>
+              <b>Status </b>
+              <span>{table.status}</span>
+            </Card.Text>
+          </Col>
+          <Col>
+            <Button>
+              <Nav.Link
+                as={Link}
+                to={'/table/' + table.id}
                 className='p-0 text-white'
-                id={props.id}
               >
                 Show more
-              </Link>
-            </Nav.Item>
-          </Button>
-        </Col>
-      </Row>
+              </Nav.Link>
+            </Button>
+          </Col>
+        </Row>
+      </ListGroup>
     </div>
   );
 };

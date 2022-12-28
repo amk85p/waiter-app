@@ -29,7 +29,7 @@ const Tables = () => {
       <h1>All Tables</h1>
 
       {tables.map((table) => (
-        <Table key={table.id} id={table.id} {...table} />
+        <Table key={table.id} id={table.id} table={table} {...table} />
       ))}
     </>
   );

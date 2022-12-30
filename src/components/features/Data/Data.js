@@ -25,7 +25,6 @@ const Data = ({ table, id }) => {
     setBill(table.bill);
   }, [table]);
 
-  const [error, setError] = useState(false);
   // const id = parseInt(table.id);
   // console.log('table', table);
 
@@ -44,8 +43,7 @@ const Data = ({ table, id }) => {
   };
 
   // console.log('error', error);
-  const pplAmount = parseInt(peopleAmount);
-  const maxPplAmount = parseInt(maxPeopleAmount);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -63,7 +61,7 @@ const Data = ({ table, id }) => {
       setPeopleAmount(table.peopleAmount);
       setBill(table.bill);
     }
-  }, [status]);
+  }, [status, table.peopleAmount, table.bill]);
 
   return (
     <>

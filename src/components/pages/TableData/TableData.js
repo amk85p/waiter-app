@@ -1,36 +1,27 @@
-import { getTableById } from '../../../redux/tablesRedux';
-
-import Card from 'react-bootstrap/Card';
+import { getTableById, getAllTables } from '../../../redux/tablesRedux';
 import { Navigate } from 'react-router-dom';
-import { Col } from 'react-bootstrap';
-
 import { useSelector } from 'react-redux';
-
 import { useParams } from 'react-router-dom';
-
 import SpinnerApp from '../../common/Spinner/Spinner';
-
 import Data from '../../features/Data/Data';
 
 const TableData = () => {
   const { id } = useParams();
+  const table = useSelector((state) => getTableById(state, parseInt(id)));
+  const tables = useSelector((state) => getAllTables(state));
 
-  const table = useSelector((state) => getTableById(state, id));
-
-  if (!table) {
-    // return <Navigate to='/' />;
+  if (!table && !tables.length) {
     return <SpinnerApp />;
-  } else {
-    return (
-      <div>
-        <br />
-        <Col>
-          <Card.Title>Table nr {table.id}</Card.Title>
-        </Col>
-
-        <Data table={table} />
-      </div>
-    );
   }
+  if (!table && tables.length) {
+    return <Navigate to='/' />;
+  }
+  // console.log('2table', table);
+  return (
+    <div>
+      <br />
+      <Data table={table} id={id} />
+    </div>
+  );
 };
 export default TableData;

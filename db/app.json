@@ -2,10 +2,10 @@
   "tables": [
     {
       "id": 1,
-      "peopleAmount": 4,
+      "peopleAmount": 0,
       "maxPeopleAmount": 4,
-      "status": "Busy",
-      "bill": 4
+      "status": "Free",
+      "bill": 0
     },
     {
       "id": 2,

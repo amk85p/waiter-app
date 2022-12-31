@@ -25,6 +25,12 @@ const Data = ({ table, id }) => {
     setBill(table.bill);
   }, [table]);
 
+  useEffect(() => {
+    if (peopleAmount > maxPeopleAmount) {
+      setPeopleAmount(maxPeopleAmount);
+    }
+  }, [maxPeopleAmount]);
+
   // const id = parseInt(table.id);
   // console.log('table', table);
 
@@ -70,12 +76,13 @@ const Data = ({ table, id }) => {
       </Col>
       <form onSubmit={handleSubmit}>
         <hr></hr>
-        <Row className='flex'></Row>
+        <Row className='flex' xs='auto'></Row>
+        {/* status */}
         <Row className='flex' xs='auto'>
-          <Col className='my-2'>
+          <Col className='my-2 ' xs={5} md={1}>
             <Card.Text className='my-1'>Status</Card.Text>
           </Col>
-          <Col>
+          <Col lg='1' className='p-0 width-50px'>
             <Form.Control
               as='select'
               value={status}
@@ -96,15 +103,16 @@ const Data = ({ table, id }) => {
             </Form.Control>
           </Col>
         </Row>
+        {/* peopleAmount */}
         <Row xs='auto'>
-          <Col className='my-2'>
+          <Col className='my-2' xs={6} md={1}>
             <Card.Text className='my-1'>People</Card.Text>
           </Col>
 
-          <Col>
-            <Row xs='auto'>
-              <InputGroup>
-                <Col md={4}>
+          <Col xs={1} md={4}>
+            <Row>
+              <InputGroup className='p-0'>
+                <Col md={2}>
                   <Form.Control
                     className='text-center'
                     type='number'
@@ -115,23 +123,24 @@ const Data = ({ table, id }) => {
                     maxLength='2'
                     placeholder={peopleAmount}
                     onChange={(e) => setPeopleAmount(e.target.value)}
+                    isInvalid={peopleAmount < 0}
                   />
                 </Col>
 
-                <p className='mx-1'>/</p>
+                <p className='mx-1 p-1'>/</p>
 
-                <Col md={4}>
+                <Col md={2}>
                   <Form.Control
                     className='text-center'
                     type='number'
                     value={maxPeopleAmount}
-                    min={peopleAmount}
+                    min='0'
                     max='10'
                     minLength='1'
                     maxLength='2'
                     placeholder={maxPeopleAmount}
                     onChange={(e) => setMaxPeopleAmount(e.target.value)}
-                    // isInvalid={pplAmount > maxPplAmount}
+                    isInvalid={maxPeopleAmount < 0}
                   />
                 </Col>
               </InputGroup>
@@ -141,20 +150,20 @@ const Data = ({ table, id }) => {
 
         <div className={clsx(status !== 'Busy' && 'visually-hidden')}>
           <Row xs='auto'>
-            <Col className='my-2'>
+            <Col className='my-2' xs={6} md={1}>
               <Card.Text className='my-1'>Bill</Card.Text>
             </Col>
-            <Col>
+            <Col className='p-0'>
               <Row xs='auto'>
                 <InputGroup>
-                  <p className='p-2'>$</p>
-                  <Col md={4}>
+                  <p className='p-2 ps-0'>$</p>
+                  <Col xs={2} md={6}>
                     <Form.Control
                       className='text-center'
                       type='number'
                       min='0'
                       minLength='1'
-                      maxLength='3'
+                      maxLength='4'
                       value={bill}
                       onChange={(e) => setBill(e.target.value)}
                     />

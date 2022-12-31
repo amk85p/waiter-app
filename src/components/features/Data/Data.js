@@ -79,7 +79,7 @@ const Data = ({ table, id }) => {
         <Row className='flex' xs='auto'></Row>
         {/* status */}
         <Row className='flex' xs='auto'>
-          <Col className='my-2 ' xs={5} md={1}>
+          <Col className='my-2 ' md={1}>
             <Card.Text className='my-1'>Status</Card.Text>
           </Col>
           <Col lg='1' className='p-0 width-50px'>
@@ -105,11 +105,11 @@ const Data = ({ table, id }) => {
         </Row>
         {/* peopleAmount */}
         <Row xs='auto'>
-          <Col className='my-2' xs={6} md={1}>
+          <Col className='my-2' md={1}>
             <Card.Text className='my-1'>People</Card.Text>
           </Col>
 
-          <Col xs={1} md={4}>
+          <Col md={4}>
             <Row>
               <InputGroup className='p-0'>
                 <Col md={2}>
@@ -150,14 +150,14 @@ const Data = ({ table, id }) => {
 
         <div className={clsx(status !== 'Busy' && 'visually-hidden')}>
           <Row xs='auto'>
-            <Col className='my-2' xs={6} md={1}>
+            <Col className='my-2' md={1}>
               <Card.Text className='my-1'>Bill</Card.Text>
             </Col>
             <Col className='p-0'>
               <Row xs='auto'>
                 <InputGroup>
                   <p className='p-2 ps-0'>$</p>
-                  <Col xs={2} md={6}>
+                  <Col md={6}>
                     <Form.Control
                       className='text-center'
                       type='number'

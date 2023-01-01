@@ -25,11 +25,14 @@ const Data = ({ table, id }) => {
     setBill(table.bill);
   }, [table]);
 
+  const pplAmount = parseInt(peopleAmount);
+  const maxPplAmount = parseInt(maxPeopleAmount);
+
   useEffect(() => {
-    if (peopleAmount > maxPeopleAmount) {
+    if (pplAmount > maxPplAmount) {
       setPeopleAmount(maxPeopleAmount);
     }
-  }, [maxPeopleAmount]);
+  }, [maxPeopleAmount, pplAmount, maxPplAmount]);
 
   // const id = parseInt(table.id);
   // console.log('table', table);
@@ -109,10 +112,10 @@ const Data = ({ table, id }) => {
             <Card.Text className='my-1'>People</Card.Text>
           </Col>
 
-          <Col md={4}>
+          <Col sm={6} md={6}>
             <Row>
               <InputGroup className='p-0'>
-                <Col md={2}>
+                <Col sm={4} md={2}>
                   <Form.Control
                     className='text-center'
                     type='number'
@@ -129,7 +132,7 @@ const Data = ({ table, id }) => {
 
                 <p className='mx-1 p-1'>/</p>
 
-                <Col md={2}>
+                <Col sm={4} md={2}>
                   <Form.Control
                     className='text-center'
                     type='number'
@@ -157,7 +160,7 @@ const Data = ({ table, id }) => {
               <Row xs='auto'>
                 <InputGroup>
                   <p className='p-2 ps-0'>$</p>
-                  <Col md={6}>
+                  <Col xs={6} sm={6} md={6}>
                     <Form.Control
                       className='text-center'
                       type='number'

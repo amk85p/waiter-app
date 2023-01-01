@@ -82,10 +82,10 @@ const Data = ({ table, id }) => {
         <Row className='flex' xs='auto'></Row>
         {/* status */}
         <Row className='flex' xs='auto'>
-          <Col className='my-2 ' md={1}>
+          <Col className='my-2' sm={2} md={2} lg={1}>
             <Card.Text className='my-1'>Status</Card.Text>
           </Col>
-          <Col lg='1' className='p-0 width-50px'>
+          <Col lg='1' className='p-0'>
             <Form.Control
               as='select'
               value={status}
@@ -108,7 +108,7 @@ const Data = ({ table, id }) => {
         </Row>
         {/* peopleAmount */}
         <Row xs='auto'>
-          <Col className='my-2' md={1}>
+          <Col className='my-2' sm={2} md={2} lg={1}>
             <Card.Text className='my-1'>People</Card.Text>
           </Col>
 
@@ -153,7 +153,7 @@ const Data = ({ table, id }) => {
 
         <div className={clsx(status !== 'Busy' && 'visually-hidden')}>
           <Row xs='auto'>
-            <Col className='my-2' md={1}>
+            <Col className='my-2' sm={2} md={2} lg={1}>
               <Card.Text className='my-1'>Bill</Card.Text>
             </Col>
             <Col className='p-0'>
